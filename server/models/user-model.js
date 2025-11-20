@@ -43,6 +43,11 @@ userSchema.pre("save", async function (next) {
   }
 });
 
+// verify password
+userSchema.methods.verifyPassword = function () {
+  return argon2.verify(this.password, password);
+};
+
 // jwt token
 userSchema.methods.generateToken = async function () {
   try {
@@ -57,7 +62,9 @@ userSchema.methods.generateToken = async function () {
         expiresIn: "30d",
       }
     );
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // defining the model:
