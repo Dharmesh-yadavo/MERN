@@ -1,11 +1,17 @@
 import express from "express";
-import router from "./router/auth-router";
+import router from "./router/auth-router.js";
+import { connectDb } from "./utils/db.js";
 
 const app = express();
+
+app.use(express.json());
 
 app.use("/api/auth", router);
 
 const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`server is runing at port: ${PORT}`);
+
+connectDb().then(() => {
+  app.listen(PORT, () => {
+    console.log(`server is runing at port: ${PORT}`);
+  });
 });
