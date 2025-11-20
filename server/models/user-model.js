@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import argon2 from "argon2";
+import jwt from "jsonwebtoken";
 
 const userSchema = new mongoose.Schema({
   userName: {
@@ -36,12 +37,28 @@ userSchema.pre("save", async function (next) {
 
   try {
     const hash_password = await argon2.hash(user.password);
-    console.log("hash_password: ", hash_password);
     user.password = hash_password;
   } catch (error) {
     next(error);
   }
 });
+
+// jwt token
+userSchema.methods.generateToken = async function () {
+  try {
+    return jwt.sign(
+      {
+        userId: this._id.toString(),
+        email: this.email,
+        isAdmin: this.isAdmin,
+      },
+      process.env.JWT_SECRET_KEY,
+      {
+        expiresIn: "30d",
+      }
+    );
+  } catch (error) {}
+};
 
 // defining the model:
 export const User = new mongoose.model("User", userSchema);

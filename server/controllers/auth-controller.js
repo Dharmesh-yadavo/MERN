@@ -17,9 +17,13 @@ export const getRegisterPage = async (req, res) => {
       return res.status(400).json({ msg: "email already exists" });
     }
 
-    await User.create({ userName, email, phone, password });
+    const userCreated = await User.create({ userName, email, phone, password });
 
-    res.status(200).json({ data: req.body });
+    res.status(200).json({
+      msg: "registration completed",
+      token: await userCreated.generateToken(),
+      userId: userCreated._id.toString(),
+    });
   } catch (error) {
     console.log(error);
   }
