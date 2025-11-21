@@ -9,7 +9,7 @@ export const getHomePage = (req, res) => {
   }
 };
 
-export const getRegisterPage = async (req, res) => {
+export const postRegisterPage = async (req, res) => {
   try {
     const { userName, email, phone, password } = req.body;
 
@@ -31,7 +31,7 @@ export const getRegisterPage = async (req, res) => {
   }
 };
 
-export const getLoginPage = async (req, res) => {
+export const postLoginPage = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -53,6 +53,6 @@ export const getLoginPage = async (req, res) => {
       res.status(401).json({ message: "Invalid email or password" });
     }
   } catch (error) {
-    res.status(500).json("internal server error");
+    res.status(500).json({ msg: "internal server error" + error });
   }
 };

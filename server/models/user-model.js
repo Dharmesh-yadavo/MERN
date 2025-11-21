@@ -44,8 +44,8 @@ userSchema.pre("save", async function (next) {
 });
 
 // verify password
-userSchema.methods.verifyPassword = function () {
-  return argon2.verify(this.password, password);
+userSchema.methods.verifyPassword = async function (password) {
+  return await argon2.verify(this.password, password);
 };
 
 // jwt token
