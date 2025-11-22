@@ -6,7 +6,7 @@ import { Contact } from "./pages/Contact";
 import { Service } from "./pages/Service";
 import { Register } from "./pages/Register";
 import { Login } from "./Login";
-import { AppLayout } from "./layout/AppLayout";
+import { AppLayout } from "./Components/layout/AppLayout";
 
 const router = createBrowserRouter([
   {
