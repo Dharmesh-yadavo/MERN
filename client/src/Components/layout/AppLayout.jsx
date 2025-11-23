@@ -4,10 +4,10 @@ import { Header } from "../ui/Header";
 
 export const AppLayout = () => {
   return (
-    <>
+    <div className="bg-black min-h-screen text-white">
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
