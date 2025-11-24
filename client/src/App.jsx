@@ -5,7 +5,7 @@ import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Service } from "./pages/Service";
 import { Register } from "./pages/Register";
-import { Login } from "./Login";
+import { Login } from "./pages/Login";
 import { AppLayout } from "./Components/layout/AppLayout";
 
 const router = createBrowserRouter([
