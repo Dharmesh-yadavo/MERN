@@ -8,14 +8,38 @@ export const Contact = () => {
   });
 
   const handleInput = (e) => {
-    let name = e.target.value;
+    let name = e.target.name;
     let value = e.target.value;
 
     setContact({ ...contact, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/form/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contact),
+      });
+      console.log("response: ", response);
+      // alert(response);
+
+      if (response.ok) {
+        setContact({ userName: "", email: "", message: "" });
+        const responseData = await response.json();
+        alert(responseData);
+        console.log(responseData);
+      } else {
+        // Handle API error here
+        console.error("API Error:", response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -32,32 +56,24 @@ export const Contact = () => {
           <div className="bg-white/10 backdrop-blur-xl p-10 shadow-2xl rounded-xl border border-white-400 ">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <h1 className="text-3xl font-bold mb-6 uppercase tracking-wider text-center">
-                Contact Form{" "}
+                Contact Form
               </h1>
               {/* usernme */}
-              <div className="flex flex-col ">
-                <label
-                  htmlFor="userName"
-                  className="text-md font-semibold pb-2"
-                >
-                  Username :
-                </label>
+              <div className="flex flex-col">
+                <label className="mb-1 text-sm font-semibold">Username</label>
                 <input
                   type="text"
                   name="userName"
                   value={contact.userName}
                   onChange={handleInput}
-                  required
-                  placeholder="Enter your username"
                   className="bg-white/5 border border-white/20 px-4 py-2 rounded-lg focus:ring-2 
                   focus:ring-purple-400 focus:outline-none transition placeholder-gray-400"
+                  placeholder="Enter your username"
                 />
               </div>
               {/* email */}
               <div className="flex flex-col">
-                <label htmlFor="email" className="text-md font-semibold pb-2">
-                  Email :{" "}
-                </label>
+                <label className="text-md font-semibold pb-2">Email :</label>
                 <input
                   type="email"
                   name="email"
@@ -71,9 +87,7 @@ export const Contact = () => {
               </div>
               {/* message */}
               <div className="flex flex-col">
-                <label htmlFor="message" className="text-md font-semibold pb-2">
-                  Message :{" "}
-                </label>
+                <label className="text-md font-semibold pb-2">Message :</label>
                 <textarea
                   name="message"
                   autoComplete="off"
