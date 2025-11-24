@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const [user, setUser] = useState({
-    username: "",
+    userName: "",
     email: "",
     phone: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -15,8 +18,28 @@ export const Register = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        alert("registration successful");
+        setUser({ userName: "", email: "", phone: "", password: "" });
+        console.log(responseData);
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log("Error", error);
+    }
   };
 
   return (
@@ -42,8 +65,8 @@ export const Register = () => {
                 <label className="mb-1 text-sm font-semibold">Username</label>
                 <input
                   type="text"
-                  name="username"
-                  value={user.username}
+                  name="userName"
+                  value={user.userName}
                   onChange={handleInput}
                   className="bg-white/5 border border-white/20 px-4 py-2 rounded-lg focus:ring-2 
                   focus:ring-purple-400 focus:outline-none transition placeholder-gray-400"

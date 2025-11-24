@@ -9,10 +9,10 @@ export const Footer = () => {
   ];
 
   const followUs = [
-    { id: "/", label: "Instagram" },
-    { id: "/", label: "LinkedIn" },
-    { id: "/", label: "GitHub" },
-    { id: "/", label: "Twitter" },
+    { id: 1, to: "/", label: "Instagram" },
+    { id: 2, to: "/", label: "LinkedIn" },
+    { id: 3, to: "/", label: "GitHub" },
+    { id: 4, to: "/", label: "Twitter" },
   ];
   return (
     <>
@@ -43,9 +43,9 @@ export const Footer = () => {
           {/* Social Links */}
           <div>
             <h3 className="text-xl font-semibold mb-2">Follow Us</h3>
-            {followUs.map((item) => (
+            {followUs.map((item, index) => (
               <NavLink
-                key={item.id}
+                key={index}
                 to={item.id}
                 className="text-gray-500 font-bold flex "
               >

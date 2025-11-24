@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export const Contact = () => {
   const [contact, setContact] = useState({
-    username: "",
+    userName: "",
     email: "",
     message: "",
   });
@@ -37,15 +37,15 @@ export const Contact = () => {
               {/* usernme */}
               <div className="flex flex-col ">
                 <label
-                  htmlFor="username"
+                  htmlFor="userName"
                   className="text-md font-semibold pb-2"
                 >
                   Username :
                 </label>
                 <input
                   type="text"
-                  name="username"
-                  value={contact.username}
+                  name="userName"
+                  value={contact.userName}
                   onChange={handleInput}
                   required
                   placeholder="Enter your username"
