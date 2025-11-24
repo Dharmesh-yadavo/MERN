@@ -1,10 +1,21 @@
 import express from "express";
+import cors from "cors";
 import router from "./router/auth-router.js";
 import { connectDb } from "./utils/db.js";
 import { errorMiddleware } from "./middleware/error-middleware.js";
 import contactRouter from "./router/contact-route.js";
 
 const app = express();
+
+// handling CORS
+
+const corsOption = {
+  origion: "http://localhost:5173",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+};
+
+app.use(cors(corsOption));
 
 app.use(express.json());
 
