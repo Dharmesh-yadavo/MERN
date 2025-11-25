@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { postContactFormPage } from "../controllers/contact-controller.js";
 
-const contactRouter = Router();
+const router = Router();
 
 // Route directly uses the imported function
-contactRouter.route("/contact").post(postContactFormPage);
+router.route("/contact").post(postContactFormPage);
 
-export default contactRouter;
+export const contactRouter = router;

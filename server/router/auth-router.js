@@ -13,4 +13,4 @@ router
 
 router.route("/login").post(authControllers.postLoginPage);
 
-export default router;
+export const authRouter = router;
