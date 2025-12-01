@@ -1,3 +1,4 @@
+import Noise from "@/Components/Noise";
 import { BackgroundAnimation } from "../Components/ui/BackgroundAnimation";
 
 export const Home = () => {
@@ -5,6 +6,13 @@ export const Home = () => {
     <>
       <BackgroundAnimation>
         <section className="min-h-screen flex items-center justify-center">
+          <Noise
+            patternSize={250}
+            patternScaleX={1}
+            patternScaleY={1}
+            patternRefreshInterval={1}
+            patternAlpha={10}
+          />
           <div className="max-w-6xl w-full  md:grid-cols-2 gap-10 items-center">
             <main className=" pt-20 pb-40">
               <div className="max-w-44 bg-gray-100 py-1 border rounded-sm">
