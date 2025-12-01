@@ -1,4 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import AnimatedText from "./AnimatedText";
 
 export const Header = () => {
   const navigationItems = [
@@ -15,7 +17,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 w-full z-10 mt-4 ">
+      <header className="fixed top-0 w-full z-20 mt-4 ">
         <nav className="max-w-2xl mx-auto flex items-center justify-between p-4 border rounded-xl  bg-white">
           {/* Skillera Logo/Navlink */}
           <div className="flex-shrink-0">
@@ -32,22 +34,28 @@ export const Header = () => {
                 to={item.id}
                 className="text-m font-semibold"
               >
-                {item.label}
+                <AnimatedText label={item.label} />
               </NavLink>
             ))}
           </div>
 
           {/* Navigation Buttons (Talk to us / Login / Signup) */}
-          <div className="flex space-x-4">
+          <div className="flex space-x-0">
             {navigationButtons.map((item) => (
               <NavLink
                 key={item.id}
                 to={item.id}
-                // You can style these to look like the 'Talk to us' button
-                // from the MARROW site, which has a pink background.
-                className="text-m font-semibold "
+                // Apply the main button styles to the NavLink
+                className="group flex items-center space-x-2 py-2 px-4 text-m font-semibold transition"
               >
-                {item.label}
+                {/* 1. The Text Label */}
+                <span className="shrink-0 hover:translate-y-[-1px]">
+                  {item.label}
+                </span>
+
+                {/* 2. The Pink Circular Icon */}
+                {/* Apply the circular pink background and text color to the icon */}
+                <ArrowUpRight className="w-7 h-7 bg-pink-300 p-1.5 rounded-full transition duration-300 ease-in-out group-hover:translate-y-[-1px] group-hover:bg-black group-hover:text-white group-hover:rotate-45" />
               </NavLink>
             ))}
           </div>
