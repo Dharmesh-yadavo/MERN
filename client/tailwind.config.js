@@ -1,46 +1,24 @@
-// import { transform } from "framer-motion";
-
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      // keyframes: {
-      //   floatBG: {
-      //     "0%": { transform: "scale(1) translateY(0px)" },
-      //     "50%": { transform: "scale(1.03) translateY(-500px)" },
-      //     "100%": { transform: "scale(1) translateY(0px)" },
-      //   },
-      // },
-      // animation: {
-      //   floatBG: "floatBG 8s ease-in-out infinite",
-      // },
-      extend: {
-        keyframes: {
-          halfCircleUp: {
-            "0%": {
-              transform: "translateY(0) scale(1)",
-              background:
-                "radial-gradient(circle, rgba(253,165,254,1), rgba(185,95,186,0.6))",
-              opacity: "0.8",
-            },
-            "50%": {
-              background:
-                "radial-gradient(circle, rgba(185,95,186,1), rgba(253,165,254,0.6))",
-              opacity: "1",
-            },
-            "100%": {
-              transform: "translateY(-400px) scale(1.2)",
-              background:
-                "radial-gradient(circle, rgba(253,165,254,1), rgba(185,95,186,0.4))",
-              opacity: "0",
-            },
+      keyframes: {
+        spinGradient: {
+          "0%": {
+            transform: "translate(-50%, -40%) rotate(0deg) scale(1)",
+          },
+          "50%": {
+            transform: "translate(-50%, -60%) rotate(180deg) scale(1.5)",
+          },
+          "100%": {
+            transform: "translate(-50%, -40%) rotate(0deg) scale(1)",
           },
         },
-        animation: {
-          halfCircleUp: "halfCircleUp 8s ease-in-out infinite",
-        },
+      },
+      animation: {
+        spinGradient: "spinGradient 10s linear infinite",
       },
 
       fontFamily: {

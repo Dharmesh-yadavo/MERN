@@ -17,7 +17,7 @@ export const Header = () => {
   return (
     <>
       <header className="fixed top-0 w-full z-20 mt-4 ">
-        <nav className="max-w-2xl mx-auto flex items-center justify-between p-4 border rounded-xl bg-white">
+        <nav className="max-w-2xl mx-auto flex items-center justify-between p-3 border rounded-xl bg-white">
           {/* Skillera Logo/Navlink */}
           <div className="flex-shrink-0">
             <NavLink to="/" className="text-2xl font-bold text-black uppercase">

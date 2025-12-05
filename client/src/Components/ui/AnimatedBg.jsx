@@ -5,14 +5,14 @@ export default function AnimatedBg({ children }) {
       <div
         className="
           absolute inset-0 bg-cover bg-center opacity-90 
-          animate-halfCircleUp
+          
         "
         style={{
           backgroundImage: "url('/images/gray-bg.webp')",
         }}
       />
       {/* {/* Overlay Tint (optional, like Marrow) */}
-      <div className="absolute  inset-0 bg-black/40"></div>
+      <div className="absolute animate-halfCircleUp  inset-0 bg-black/40"></div>
 
       {/* Foreground content */}
       <div className="relative h-full flex items-center justify-center">

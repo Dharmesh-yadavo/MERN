@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import SpinningBG from "@/Components/ui/SpiningBg";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -49,6 +50,9 @@ export const Login = () => {
       <AnimatedBg>
         <section className="min-h-screen flex items-center justify-center pt-20 pb-20">
           <div className="justify-center max-w-7xl w-full">
+            <div className="justify-center">
+              <SpinningBG />
+            </div>
             <div className=" text-center">
               <h1 className="font-amiri font-semibold italic text-5xl text-white mt-12 mb-4">
                 Log in to your account
@@ -146,7 +150,7 @@ export const Login = () => {
               <p className="text-center mt-6 text-sm text-gray-300">
                 Don't have an account?{" "}
                 <NavLink
-                  to="/register"
+                  to="/signUp"
                   className="text-pink-400 hover:text-pink-300 font-medium transition"
                 >
                   Create account
