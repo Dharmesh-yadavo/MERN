@@ -1,4 +1,7 @@
+import AnimatedBg from "@/Components/ui/AnimatedBg";
+import SpinningBG from "@/Components/ui/SpiningBg";
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export const Contact = () => {
   const [contact, setContact] = useState({
@@ -44,74 +47,86 @@ export const Contact = () => {
 
   return (
     <>
-      <section className="min-h-screen flex items-center justify-center">
-        <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="flex justify-center ">
-            <img
-              src="public/images/contact.png"
-              alt=""
-              className="w-[500px] md:w-[550px] h-[650px] "
-            />
-          </div>
-          <div className="bg-white/10 backdrop-blur-xl p-10 shadow-2xl rounded-xl border border-white-400 ">
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <h1 className="text-3xl font-bold mb-6 uppercase tracking-wider text-center">
+      <AnimatedBg>
+        <section className="min-h-screen flex items-center justify-center pt-20 pb-20">
+          <div className="justify-center max-w-6xl w-full">
+            <div className="justify-center">
+              <SpinningBG />
+            </div>
+
+            <div className=" text-center">
+              <h1 className="font-amiri font-semibold italic text-5xl text-white mt-12 mb-4">
                 Contact Form
               </h1>
-              {/* usernme */}
-              <div className="flex flex-col">
-                <label className="mb-1 text-sm font-semibold">Username</label>
-                <input
-                  type="text"
-                  name="userName"
-                  value={contact.userName}
-                  onChange={handleInput}
-                  className="bg-white/5 border border-white/20 px-4 py-2 rounded-lg focus:ring-2 
+            </div>
+
+            {/* Card */}
+            <div
+              className="relative m-auto mt-10 bg-white/10 backdrop-blur-xl py-6 px-8 rounded-2xl 
+          border border-white/20 
+          text-white w-[500px] animate-fadeIn "
+            >
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* UserName */}
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-semibold">Username</label>
+                  <input
+                    type="text"
+                    name="userName"
+                    value={contact.userName}
+                    onChange={handleInput}
+                    className="bg-white/5 border border-white/20 px-4 py-2 rounded-lg focus:ring-2 
                   focus:ring-purple-400 focus:outline-none transition placeholder-gray-400"
-                  placeholder="Enter your username"
-                />
-              </div>
-              {/* email */}
-              <div className="flex flex-col">
-                <label className="text-md font-semibold pb-2">Email :</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={contact.email}
-                  onChange={handleInput}
-                  required
-                  placeholder="Enter your email"
-                  className="bg-white/5 border border-white/20 px-4 py-2 rounded-lg focus:ring-2 
+                    placeholder="Enter your username"
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="flex flex-col">
+                  <label className="mb-1 text-sm font-semibold">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={contact.email}
+                    onChange={handleInput}
+                    className="bg-white/5 border border-white/20 px-4 py-2 rounded-lg focus:ring-2 
+                  focus:ring-purple-400 focus:outline-none transition"
+                    placeholder="Enter your email"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="text-md font-semibold pb-2">
+                    Message :
+                  </label>
+                  <textarea
+                    name="message"
+                    autoComplete="off"
+                    value={contact.message}
+                    onChange={handleInput}
+                    required
+                    cols="30"
+                    rows="4"
+                    placeholder="Enter your message"
+                    className="bg-white/5 border border-white/20 px-4 py-2 rounded-lg focus:ring-2 
                   focus:ring-purple-400 focus:outline-none transition placeholder-gray-400"
-                />
-              </div>
-              {/* message */}
-              <div className="flex flex-col">
-                <label className="text-md font-semibold pb-2">Message :</label>
-                <textarea
-                  name="message"
-                  autoComplete="off"
-                  value={contact.message}
-                  onChange={handleInput}
-                  required
-                  cols="30"
-                  rows="4"
-                  placeholder="Enter your message"
-                  className="bg-white/5 border border-white/20 px-4 py-2 rounded-lg focus:ring-2 
-                  focus:ring-purple-400 focus:outline-none transition placeholder-gray-400"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full mt-4 bg-purple-500 hover:bg-purple-600 text-white font-semibold 
-                py-3 rounded-lg shadow-lg transition transform hover:scale-[1.02] active:scale-100"
-              >
-                Submit
-              </button>
-            </form>
+                  />
+                </div>
+
+                {/* Button */}
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-pink-400 to-purple-500 
+                hover:from-purple-600 hover:to-pink-700 font-semibold 
+                py-2.5 rounded-lg shadow-lg transition transform hover:scale-[1.03] active:scale-95"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimatedBg>
     </>
   );
 };
