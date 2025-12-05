@@ -4,9 +4,9 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Service } from "./pages/Service";
-import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
 import { AppLayout } from "./Components/layout/AppLayout";
+import { SignUp } from "./pages/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +30,8 @@ const router = createBrowserRouter([
         element: <Service />,
       },
       {
-        path: "/register",
-        element: <Register />,
+        path: "/signUp",
+        element: <SignUp />,
       },
       {
         path: "/login",

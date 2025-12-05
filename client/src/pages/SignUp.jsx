@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Register = () => {
+export const SignUp = () => {
   const [user, setUser] = useState({
     userName: "",
     email: "",
@@ -22,7 +22,7 @@ export const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch("http://localhost:5000/api/auth/signUp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

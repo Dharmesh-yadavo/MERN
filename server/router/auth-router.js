@@ -8,7 +8,7 @@ const router = Router();
 router.route("/").get(authControllers.getHomePage);
 
 router
-  .route("/register")
+  .route("/signUp")
   .post(validate(signUpSchema), authControllers.postRegisterPage);
 
 router.route("/login").post(authControllers.postLoginPage);

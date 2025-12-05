@@ -1,6 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import AnimatedText from "./AnimatedText";
 
 export const Header = () => {
   const navigationItems = [
@@ -12,13 +11,13 @@ export const Header = () => {
 
   const navigationButtons = [
     { id: "/login", label: "Login" },
-    { id: "/signup", label: "Sign-up" },
+    { id: "/signUp", label: "Sign-up" },
   ];
 
   return (
     <>
       <header className="fixed top-0 w-full z-20 mt-4 ">
-        <nav className="max-w-2xl mx-auto flex items-center justify-between p-4 border rounded-xl  bg-white">
+        <nav className="max-w-2xl mx-auto flex items-center justify-between p-4 border rounded-xl bg-white">
           {/* Skillera Logo/Navlink */}
           <div className="flex-shrink-0">
             <NavLink to="/" className="text-2xl font-bold text-black uppercase">
@@ -32,9 +31,9 @@ export const Header = () => {
               <NavLink
                 key={item.id}
                 to={item.id}
-                className="text-m font-semibold"
+                className="text-m font-semibold flex items-center gap-1 overflow-visible"
               >
-                <AnimatedText label={item.label} />
+                {item.label}
               </NavLink>
             ))}
           </div>

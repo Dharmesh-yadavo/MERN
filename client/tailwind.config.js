@@ -1,9 +1,48 @@
+// import { transform } from "framer-motion";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      // keyframes: {
+      //   floatBG: {
+      //     "0%": { transform: "scale(1) translateY(0px)" },
+      //     "50%": { transform: "scale(1.03) translateY(-500px)" },
+      //     "100%": { transform: "scale(1) translateY(0px)" },
+      //   },
+      // },
+      // animation: {
+      //   floatBG: "floatBG 8s ease-in-out infinite",
+      // },
+      extend: {
+        keyframes: {
+          halfCircleUp: {
+            "0%": {
+              transform: "translateY(0) scale(1)",
+              background:
+                "radial-gradient(circle, rgba(253,165,254,1), rgba(185,95,186,0.6))",
+              opacity: "0.8",
+            },
+            "50%": {
+              background:
+                "radial-gradient(circle, rgba(185,95,186,1), rgba(253,165,254,0.6))",
+              opacity: "1",
+            },
+            "100%": {
+              transform: "translateY(-400px) scale(1.2)",
+              background:
+                "radial-gradient(circle, rgba(253,165,254,1), rgba(185,95,186,0.4))",
+              opacity: "0",
+            },
+          },
+        },
+        animation: {
+          halfCircleUp: "halfCircleUp 8s ease-in-out infinite",
+        },
+      },
+
       fontFamily: {
         amiri: ["Amiri"],
         fruktur: ["Fruktur", "cursive"],
@@ -57,18 +96,8 @@ export default {
           5: "hsl(var(--chart-5))",
         },
       },
-      animation: {
-        blob: "blob 7s infinite",
-      },
-      keyframes: {
-        blob: {
-          "0%": { transform: "translate(0px, 0px) scale(1)" },
-          "33%": { transform: "translate(30px, -50px) scale(1.1)" },
-          "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
-          "100%": { transform: "translate(0px, 0px) scale(1)" },
-        },
-      },
     },
   },
+  // eslint-disable-next-line no-undef
   plugins: [require("tailwindcss-animate")],
 };
